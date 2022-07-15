@@ -14,7 +14,7 @@ CREATE TABLE [dbo].[tblNotebook](
    REFERENCES [dbo].[tblCustomers] ([Id]),
 
   CONSTRAINT [FK_tblNotebook_tblManufacturers] FOREIGN KEY([ManufacturerId])
-   REFERENCES [dbo].[tblManufacturers] ([Id])
+   REFERENCES [dbo].[tblManufacturers] ([Id]),
 
   CONSTRAINT [FK_tblNotebook_tblGroceries] FOREIGN KEY([ProductId])
    REFERENCES [dbo].[tblGroceries] ([Id]),
