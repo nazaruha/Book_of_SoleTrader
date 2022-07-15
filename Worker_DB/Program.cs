@@ -19,6 +19,21 @@ namespace Worker_DB
             
         }
 
-        
+        static bool IsDBExists()
+        {
+            cmd = con.CreateCommand();
+            cmd.CommandText = "SELECT name FROM master.sys.databases";
+            using (var reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    if (reader["name"].ToString() == DbName)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
     }
 }
