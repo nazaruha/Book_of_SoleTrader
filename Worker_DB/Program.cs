@@ -39,6 +39,8 @@ namespace Worker_DB
             con = new SqlConnection(connectionDB + $"Initial Catalog={DbName}");
             con.Open();
             cmd = con.CreateCommand();
+
+            GenerateTables();
         }
 
         static bool IsDBExists()
@@ -56,6 +58,28 @@ namespace Worker_DB
                 }
             }
             return false;
+        }
+
+        static void GenerateTables()
+        {
+            string[] tables = { "tblCustomers.sql", "tblManufacturers.sql", "tblGroceries.sql", "tblStorage.sql", "tblNotebook.sql" };
+            foreach (var table in tables)
+            {
+                ExecuteCommandFromFile(table);
+            }
+        }
+
+        static void ExecuteCommandFromFile(string file)
+        {
+            string sql = ReadSqlFile(file);
+            cmd.CommandText = sql;
+            cmd.ExecuteNonQuery();
+        }
+
+        static string ReadSqlFile(string file)
+        {
+            string sql = File.ReadAllText($"{dirSql}\\{file}");
+            return sql;
         }
     }
 }
