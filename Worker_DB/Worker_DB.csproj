@@ -144,6 +144,12 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="SqlTables\tblStorage.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlTables\tblGroceries.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="SqlTables\tblCustomers.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
