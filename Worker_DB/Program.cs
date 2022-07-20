@@ -18,6 +18,7 @@ namespace Worker_DB
     {
         static string DbName = "РРО2";
         static string dirSql = "SqlTables";
+        static string dirJson = "JSON_Objects";
         static SqlConnection con;
         static SqlCommand cmd;
 
@@ -46,7 +47,8 @@ namespace Worker_DB
             cmd = con.CreateCommand();
 
             //GenerateTables();
-            GenerateManufacturers();
+            //GenerateManufacturers();
+            GenerateGroceries();
         }
 
         static bool IsDBExists()
@@ -90,7 +92,7 @@ namespace Worker_DB
 
         static void GenerateManufacturers()
         {
-            string json = File.ReadAllText("JSON_Objects\\Manufacturers.json");
+            string json = File.ReadAllText($"{dirJson}\\Manufacturers.json");
             List<Manufacturer> name = JsonConvert.DeserializeObject<List<Manufacturer>>(json);
 
             DataTable dt = new DataTable();
@@ -107,6 +109,30 @@ namespace Worker_DB
             using (SqlBulkCopy bulkCopy = new SqlBulkCopy(con))
             {
                 bulkCopy.DestinationTableName = "tblManufacturers";
+                bulkCopy.WriteToServer(dt);
+            }
+            Console.WriteLine("Table is generated");
+        }
+
+        static void GenerateGroceries()
+        {
+            string json = File.ReadAllText($"{dirJson}\\Groceries.json");
+            List<Product> products = JsonConvert.DeserializeObject<List<Product>>(json);
+
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Id");
+            dt.Columns.Add(new DataColumn(nameof(Product.Name)));
+
+            for (int i = 0; i < products.Count; i++)
+            {
+                DataRow row = dt.NewRow();
+                row["Id"] = 0;
+                row[nameof(Product.Name)] = products[i].Name;
+                dt.Rows.Add(row);
+            }
+            using (SqlBulkCopy bulkCopy = new SqlBulkCopy(con))
+            {
+                bulkCopy.DestinationTableName = "tblGroceries";
                 bulkCopy.WriteToServer(dt);
             }
             Console.WriteLine("Table is generated");
