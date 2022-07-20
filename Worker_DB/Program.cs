@@ -6,6 +6,11 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using Worker_DB.Models;
+using Bogus;
+using System.Data;
 
 namespace Worker_DB
 {
@@ -40,7 +45,8 @@ namespace Worker_DB
             con.Open();
             cmd = con.CreateCommand();
 
-            GenerateTables();
+            //GenerateTables();
+            GenerateManufacturers();
         }
 
         static bool IsDBExists()
@@ -81,5 +87,30 @@ namespace Worker_DB
             string sql = File.ReadAllText($"{dirSql}\\{file}");
             return sql;
         }
+
+        static void GenerateManufacturers()
+        {
+            string json = File.ReadAllText("JSON_Objects\\Manufacturers.json");
+            List<Manufacturer> name = JsonConvert.DeserializeObject<List<Manufacturer>>(json);
+
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Id");
+            dt.Columns.Add(new DataColumn(nameof(Manufacturer.Name)));
+
+            for (int i = 0; i < name.Count; i++)
+            {
+                DataRow row = dt.NewRow();
+                row["Id"] = 0;
+                row[nameof(Manufacturer.Name)] = name[i].Name;
+                dt.Rows.Add(row);
+            }
+            using (SqlBulkCopy bulkCopy = new SqlBulkCopy(con))
+            {
+                bulkCopy.DestinationTableName = "tblManufacturers";
+                bulkCopy.WriteToServer(dt);
+            }
+            Console.WriteLine("Table is generated");
+        }
+
     }
 }
