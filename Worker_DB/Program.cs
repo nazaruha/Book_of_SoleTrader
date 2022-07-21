@@ -46,9 +46,9 @@ namespace Worker_DB
             con.Open();
             cmd = con.CreateCommand();
 
-            //GenerateTables();
-            //GenerateManufacturers();
-            //GenerateGroceries();
+            GenerateTables();
+            GenerateManufacturers();
+            GenerateGroceries();
             GenerateStorage();
         }
 
