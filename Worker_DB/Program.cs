@@ -48,7 +48,8 @@ namespace Worker_DB
 
             //GenerateTables();
             //GenerateManufacturers();
-            GenerateGroceries();
+            //GenerateGroceries();
+            GenerateStorage();
         }
 
         static bool IsDBExists()
@@ -136,6 +137,80 @@ namespace Worker_DB
                 bulkCopy.WriteToServer(dt);
             }
             Console.WriteLine("Table is generated");
+        }
+
+        static private void GenerateStorage()
+        {
+            List<int> groceries = GetGroceriesId();
+            List<int> manufacturers = GetManufacturersId();
+
+            List<Storage> storages = new List<Storage>();
+            Random rand = new Random();
+            Faker faker = new Faker();
+            foreach (var manufacturer in manufacturers)
+            {
+                int productCount = rand.Next(1, groceries.Count + 1);
+                List<int> checkIds = new List<int>();
+                checkIds.Clear();
+                for (int i = 0; i < productCount; i++)
+                {
+                    int productId = rand.Next(0, groceries.Count);
+                    if (checkIds.Contains(productId)) continue;
+                    checkIds.Add(productId);
+                    storages.Add(new Storage() { ManufacturerId = manufacturer, ProductId = groceries[productId], Price = (int)faker.Finance.Amount(1, 500, 1), Count = (int)faker.Finance.Amount() });
+                }
+            }
+
+            DataTable dt = new DataTable();
+            dt.Columns.Add(new DataColumn(nameof(Storage.ManufacturerId)));
+            dt.Columns.Add(new DataColumn(nameof(Storage.ProductId)));
+            dt.Columns.Add(new DataColumn(nameof(Storage.Price)));
+            dt.Columns.Add(new DataColumn(nameof(Storage.Count)));
+
+            for (int i = 0; i < storages.Count; i++)
+            {
+                DataRow row = dt.NewRow();
+                row[nameof(Storage.ManufacturerId)] = storages[i].ManufacturerId;
+                row[nameof(Storage.ProductId)] = storages[i].ProductId;
+                row[nameof(Storage.Price)] = storages[i].Price;
+                row[nameof(Storage.Count)] = storages[i].Count;
+                dt.Rows.Add(row);
+            }
+            using (SqlBulkCopy bulkCopy = new SqlBulkCopy(con))
+            {
+                bulkCopy.DestinationTableName = "tblStorage";
+                bulkCopy.WriteToServer(dt);
+            }
+        }
+
+        static private List<int> GetGroceriesId()
+        {
+            cmd.CommandText = "SELECT Id " +
+                "FROM tblGroceries";
+            List<int> groceriesId = new List<int>();
+            using (var reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    groceriesId.Add(Int32.Parse(reader["Id"].ToString()));
+                }
+            }
+            return groceriesId;
+        }
+
+        static private List<int> GetManufacturersId()
+        {
+            cmd.CommandText = "SELECT Id " +
+                "FROM tblManufacturers";
+            List<int> manufacturersId = new List<int>();
+            using (var reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    manufacturersId.Add(Int32.Parse(reader["Id"].ToString()));
+                }
+            }
+            return manufacturersId;
         }
 
     }
