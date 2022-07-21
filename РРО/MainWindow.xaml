@@ -7,6 +7,22 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="329*"/>
+            <ColumnDefinition Width="71*"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid Name="dgNoteBook" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="№" Width="80"/>
+                <DataGridTextColumn Header="Date" Width="100"/>
+                <DataGridTextColumn Header="Manufacturer" Width="100"/>
+                <DataGridTextColumn Header="Product" Width="80"/>
+                <DataGridTextColumn Header="Count" Width="50"/>
+                <DataGridTextColumn Header="Total Sum" Width="80"/>
+                <DataGridTextColumn Header="Customer" Width="100"/>
+                <DataGridTextColumn Header="Discount" Width="100"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
     </Grid>
 </Window>
