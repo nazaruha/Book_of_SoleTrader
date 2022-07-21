@@ -7,10 +7,10 @@ CREATE TABLE [dbo].[tblNotebook](
   [ManufacturerId] [int] NOT NULL,
   [Count] [int] NOT NULL,
   [TotalSum] [int] NOT NULL,
-  [CuromerId] [int] NOT NULL,
+  [CustomerId] [int] NOT NULL,
   [Discount] [int] NULL,
 
-  CONSTRAINT [FK_tblNotebook_tblCustomers] FOREIGN KEY([CuromerId])
+  CONSTRAINT [FK_tblNotebook_tblCustomers] FOREIGN KEY([CustomerId])
    REFERENCES [dbo].[tblCustomers] ([Id]),
 
   CONSTRAINT [FK_tblNotebook_tblManufacturers] FOREIGN KEY([ManufacturerId])
