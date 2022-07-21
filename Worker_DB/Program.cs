@@ -16,7 +16,7 @@ namespace Worker_DB
 {
     public class Program
     {
-        static string DbName = "РРО2";
+        static string DbName = "РРО3";
         static string dirSql = "SqlTables";
         static string dirJson = "JSON_Objects";
         static SqlConnection con;
