@@ -1,0 +1,20 @@
+﻿<Window x:Class="РРО.AddManufacturerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:РРО"
+        mc:Ignorable="d"
+        Title="AddManufacturerWindow" Height="231" Width="271">
+    <Canvas>
+        <StackPanel>
+            <Label Content="Add Manufacturer" FontSize="20" FontWeight="DemiBold" Margin="45,20,0,0"/>
+            <WrapPanel Width="269">
+                <Label Content="Name:" FontSize="15" FontWeight="DemiBold" Margin="13,20,0,0"/>
+                <TextBox Name="txtManufacturer" Margin="5,20,0,0" Width="180" FontSize="18"/>
+            </WrapPanel>
+            <Label Name="lbError" Content="Manufacturer's already in database" FontSize="10" Margin="80,-3,0,0" Foreground="#FFDA2222" Visibility="Hidden"/>
+            <Button Name="btnAddManufacturer" Content="Add Manufacturer" FontSize="20" FontWeight="DemiBold" Width="177" Height="40" Background="#FF8267E8" Margin="0,25,0,0" Click="btnAddManufacturer_Click"/>
+        </StackPanel>
+    </Canvas>
+</Window>
