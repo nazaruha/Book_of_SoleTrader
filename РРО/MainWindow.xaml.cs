@@ -23,6 +23,7 @@ namespace РРО
     /// </summary>
     public partial class MainWindow : Window
     {
+        private string database { get; set; } = "РРО3";
         public SqlConnection con { get; set; }
         public SqlCommand cmd { get; set; }
         public MainWindow()
@@ -42,7 +43,7 @@ namespace РРО
 
             IConfiguration configuration = builder.Build();
             string connectionDB = configuration.GetConnectionString("DefaultConnection");
-            con = new SqlConnection(connectionDB);
+            con = new SqlConnection(connectionDB + $"Initial Catalog={database}");
             con.Open();
             cmd = con.CreateCommand();
 
@@ -65,7 +66,8 @@ namespace РРО
 
         private void btnAddManufacturer_Click(object sender, RoutedEventArgs e)
         {
-            AddManufacturerWindow addManufacturerWindow = new AddManufacturerWindow();
+            AddManufacturerWindow addManufacturerWindow = new AddManufacturerWindow(cmd);
+            addManufacturerWindow.ShowDialog();
         }
 
         private void btnAddProduct_Click(object sender, RoutedEventArgs e)
