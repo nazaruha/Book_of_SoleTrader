@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,8 @@ namespace РРО
     /// </summary>
     public partial class MainWindow : Window
     {
+        public SqlConnection con { get; set; }
+        public SqlCommand cmd { get; set; }
         public MainWindow()
         {
             InitializeComponent();
@@ -42,7 +45,7 @@ namespace РРО
 
         private void btnAddManufacturer_Click(object sender, RoutedEventArgs e)
         {
-
+            AddManufacturerWindow addManufacturerWindow = new AddManufacturerWindow();
         }
 
         private void btnAddProduct_Click(object sender, RoutedEventArgs e)
