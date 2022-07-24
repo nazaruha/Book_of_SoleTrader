@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.Extensions.Configuration;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,6 +28,24 @@ namespace РРО
         public MainWindow()
         {
             InitializeComponent();
+            OpenDbWorker();
+        }
+
+        private void OpenDbWorker()
+        {
+            Console.InputEncoding = Encoding.Unicode;
+            Console.OutputEncoding = Encoding.Unicode;
+
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+
+            IConfiguration configuration = builder.Build();
+            string connectionDB = configuration.GetConnectionString("DefaultConnection");
+            con = new SqlConnection(connectionDB);
+            con.Open();
+            cmd = con.CreateCommand();
+
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
