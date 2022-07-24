@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:РРО"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="479" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="329*"/>
@@ -23,6 +23,17 @@
                 <DataGridTextColumn Header="Discount" Width="100"/>
             </DataGrid.Columns>
         </DataGrid>
+        <StackPanel Grid.Column="1">
+            <Label Content="Notebook" FontSize="20" FontWeight="DemiBold" HorizontalAlignment="Center" Margin="0,20,0,0"/>
+            <Button Name="btnAdd" Content="Add Sale" FontSize="20" FontWeight="DemiBold" Width="126" Height="29" Background="#FF59D087" Margin="0,10,0,0" Click="btnAdd_Click"/>
+            <Button Name="btnEdit" Content="Edit Sale" FontSize="20" FontWeight="DemiBold" Width="126" Height="29" Background="#FFDEA642" Margin="0,24,0,0" Click="btnEdit_Click"/>
+            <Button Name="btnDelete" Content="Delete Sale" FontSize="20" FontWeight="DemiBold" Width="126" Height="29" Background="#FFDE6D42" Margin="0,24,0,0" Click="btnDelete_Click"/>
+            <Label Content="Update Database" FontSize="15" FontWeight="DemiBold" HorizontalAlignment="Center" Margin="0,40,0,0"/>
+            <Button Name="btnAddManufacturer" Content="Add Manufacturer" FontSize="14" FontWeight="DemiBold" Width="126" Height="29" Background="#FF8267E8" Margin="0,10,0,0" Click="btnAddManufacturer_Click"/>
+            <Button Name="btnAddProduct" Content="Add Product" FontSize="15" FontWeight="DemiBold" Width="126" Height="29" Background="#FFECE76B" Margin="0,10,0,0" Click="btnAddProduct_Click"/>
+            <Button Name="btnAddCustomer" Content="Add Customer" FontSize="15" FontWeight="DemiBold" Width="126" Height="29" Background="#FF6281FF" Margin="0,10,0,0" Click="btnAddCustomer_Click"/>
+            <Button Name="btnAddStorage" Content="Add to Storage" FontSize="15" FontWeight="DemiBold" Width="126" Height="29" Background="#FFE67B5C" Margin="0,10,0,0" Click="btnAddStorage_Click"/>
 
+        </StackPanel>
     </Grid>
 </Window>

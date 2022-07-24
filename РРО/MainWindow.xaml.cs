@@ -24,5 +24,40 @@ namespace РРО
         {
             InitializeComponent();
         }
+
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnAddManufacturer_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnAddProduct_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnAddCustomer_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnAddStorage_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
