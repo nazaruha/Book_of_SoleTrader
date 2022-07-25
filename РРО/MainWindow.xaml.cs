@@ -72,7 +72,8 @@ namespace РРО
 
         private void btnAddProduct_Click(object sender, RoutedEventArgs e)
         {
-
+            AddProductWindow addProductWindow = new AddProductWindow(cmd);
+            addProductWindow.ShowDialog();
         }
 
         private void btnAddCustomer_Click(object sender, RoutedEventArgs e)
