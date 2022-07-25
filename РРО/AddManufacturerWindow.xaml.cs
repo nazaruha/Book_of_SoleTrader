@@ -39,6 +39,7 @@ namespace РРО
                 reader.Read();
                 if (reader["Id"] != null)
                 {
+                    lbError.Content = "Manufacturer's already in database";
                     lbError.Visibility = Visibility.Visible;
                     cmd.Parameters.Clear();
                     reader.Close();
@@ -70,13 +71,29 @@ namespace РРО
             cmd.Parameters.Clear();
         }
 
+        private bool CheckInputting()
+        {
+            if (String.IsNullOrWhiteSpace(txtManufacturer.Text))
+            {
+                lbError.Content = "Input manufacturer's name";
+                lbError.Visibility = Visibility.Visible;
+                return false;
+            }
+            lbError.Visibility = Visibility.Hidden;
+            return true;
+        }
+
+
         private void btnAddManufacturer_Click(object sender, RoutedEventArgs e)
         {
             if (!IsManufacturerExists())
             {
-                AddManufacturer();
-                MessageBox.Show("Manufacturer has been added", "Successfully adding", MessageBoxButton.OK);
-                txtManufacturer.Clear();
+                if (CheckInputting())
+                {
+                    AddManufacturer();
+                    MessageBox.Show("Manufacturer has been added", "Successfully adding", MessageBoxButton.OK);
+                    txtManufacturer.Clear();
+                }
             }
         }
     }
