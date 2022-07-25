@@ -29,21 +29,28 @@ namespace РРО
 
         private bool IsManufacturerExists()
         {
-            cmd.CommandText = "Select Id " +
+            cmd.CommandText = "SELECT Id " +
                 "FROM tblManufacturers " +
                 @"WHERE Name = @NameField";
-            cmd.Parameters.AddWithValue("@NameField", txtManufacturer.Text);
+            cmd.Parameters.AddWithValue(@"@NameField", txtManufacturer.Text);
+            var reader = cmd.ExecuteReader();
             try
             {
-                var reader = cmd.ExecuteReader();
-                lbError.Visibility = Visibility.Visible;
-                cmd.Parameters.Clear();
-                return true;
+                reader.Read();
+                if (reader["Id"] != null)
+                {
+                    lbError.Visibility = Visibility.Visible;
+                    cmd.Parameters.Clear();
+                    reader.Close();
+                    return true;
+                }
+                return false;
             }
             catch
             {
                 lbError.Visibility = Visibility.Hidden;
                 cmd.Parameters.Clear();
+                reader.Close();
                 return false;
             }
             
@@ -58,7 +65,7 @@ namespace РРО
                 "VALUES ( " +
                 "@NameField " +
                 ")";
-            cmd.Parameters.AddWithValue("@NameField", txtManufacturer.Text);
+            cmd.Parameters.AddWithValue(@"@NameField", txtManufacturer.Text);
             cmd.ExecuteNonQuery();
             cmd.Parameters.Clear();
         }
@@ -68,6 +75,8 @@ namespace РРО
             if (!IsManufacturerExists())
             {
                 AddManufacturer();
+                MessageBox.Show("Manufacturer has been added", "Successfully adding", MessageBoxButton.OK);
+                txtManufacturer.Clear();
             }
         }
     }
