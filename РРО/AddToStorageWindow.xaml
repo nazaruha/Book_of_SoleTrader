@@ -5,8 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:РРО"
         mc:Ignorable="d"
-        Title="AddToStorageWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="AddToStorageWindow" Height="359" Width="429">
+    <Canvas>
+        <StackPanel>
+            <Label Content="Add to Storage" FontSize="20" FontWeight="DemiBold" HorizontalAlignment="Stretch" Margin="139,23,0,0"/>
+            <WrapPanel Margin="0,12,0,0">
+                <Label Content="Manufactuer" FontSize="15" FontWeight="DemiBold" Margin="20,0,0,0"/>
+                <ComboBox Name="cbManufacturers" FontSize="15" Width="159" IsReadOnly="True"/>
+            </WrapPanel>
+            <WrapPanel Margin="0,12,0,0">
+                <Label Content="Product" FontSize="15" FontWeight="DemiBold" Margin="20,0,0,0"/>
+                <ComboBox Name="cbGroceries"  FontSize="15" Width="159" IsReadOnly="True"/>
+            </WrapPanel>
+            <WrapPanel Margin="0,12,0,0">
+                <Label Content="Price" FontSize="15" FontWeight="DemiBold" Margin="20,0,0,0"/>
+                <TextBox Name="txtPrice" FontSize="20" Width="138"/>
+            </WrapPanel>
+            <WrapPanel Margin="0,12,0,0">
+                <Label Content="Count" FontSize="15" FontWeight="DemiBold" Margin="20,0,0,0"/>
+                <TextBox Name="txtCount" FontSize="20" Width="138"/>
+            </WrapPanel>
+            <Button Name="btnAddProduct" Content="Add Product" FontSize="20" FontWeight="DemiBold" Width="177" Height="40" Background="#FFECE76B" Margin="128,34,0,0" Click="btnAddProduct_Click"/>
+        </StackPanel>
+    </Canvas>
 </Window>

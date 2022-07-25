@@ -84,7 +84,8 @@ namespace РРО
 
         private void btnAddStorage_Click(object sender, RoutedEventArgs e)
         {
-
+            AddToStorageWindow addToStorageWindow = new AddToStorageWindow(cmd);
+            addToStorageWindow.ShowDialog();
         }
     }
 }
