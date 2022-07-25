@@ -40,6 +40,7 @@ namespace РРО
                 reader.Read();
                 if (reader["Id"] != null)
                 {
+                    lbError.Content = "Product's already in database";
                     lbError.Visibility = Visibility.Visible;
                     cmd.Parameters.Clear();
                     reader.Close();
@@ -71,13 +72,29 @@ namespace РРО
             cmd.Parameters.Clear();
         }
 
+        private bool CheckInputting()
+        {
+            if (String.IsNullOrWhiteSpace(txtProduct.Text))
+            {
+                lbError.Content = "Input product's name";
+                lbError.Visibility = Visibility.Visible;
+                return false;
+            }
+            lbError.Visibility = Visibility.Hidden;
+            return true;
+        }
+
         private void btnAddProduct_Click(object sender, RoutedEventArgs e)
         {
             if (!IsProductExists())
             {
-                AddManufacturer();
-                MessageBox.Show("Product has been added", "Successfully adding", MessageBoxButton.OK);
-                txtProduct.Clear();
+                if (CheckInputting())
+                {
+                    AddManufacturer();
+                    MessageBox.Show("Product has been added", "Successfully adding", MessageBoxButton.OK);
+                    txtProduct.Clear();
+                }
+                
             }
         }
     }
