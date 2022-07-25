@@ -88,11 +88,28 @@ namespace РРО
             cmd.Parameters.Clear();
         }
 
+        private bool CheckInputting()
+        {
+            if (String.IsNullOrWhiteSpace(txtName.Text))
+            {
+                lbError.Content = "Input customer's name\n";
+                if (String.IsNullOrWhiteSpace(txtPhone.Text))
+                {
+                    lbError.Content += "Input customer's phone";
+                }
+                lbError.Visibility = Visibility.Visible;
+                return false;
+            }
+            lbError.Visibility = Visibility.Hidden;
+            return true;
+        }
+
         private void btnAddCustomer_Click(object sender, RoutedEventArgs e)
         {
             if (!IsCustomerExists())
             {
-                AddCustomer();   
+                if (CheckInputting())
+                    AddCustomer();
             }
         }
     }
