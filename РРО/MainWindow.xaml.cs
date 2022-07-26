@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using System;
+using РРО.Models;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.IO;
@@ -24,6 +25,7 @@ namespace РРО
     public partial class MainWindow : Window
     {
         private string database { get; set; } = "РРО";
+        private string dirScripts { get; set; } = "Scripts";
         public SqlConnection con { get; set; }
         public SqlCommand cmd { get; set; }
         public MainWindow()
@@ -46,13 +48,37 @@ namespace РРО
             con = new SqlConnection(connectionDB + $"Initial Catalog={database}");
             con.Open();
             cmd = con.CreateCommand();
+            GetNotebook();
+        }
 
+        private void GetNotebook()
+        {
+            string script = File.ReadAllText($"{dirScripts}\\viewtblNotebook.sql");
+            cmd.CommandText = script;
+            dgNoteBook.Items.Clear();
+            using (var reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Sell sell = new Sell() { Id = int.Parse(reader["Id"].ToString()), Date = ((DateTime)reader["Date"]).ToShortDateString(), Manufacturer = reader["Manufacturer"].ToString(), Product = reader["Product"].ToString(), Count = int.Parse(reader["Count"].ToString()), TotalSum = int.Parse(reader["TotalSum"].ToString()), Customer = (reader["Customer"].ToString() + " (" + reader["Phone"].ToString() + ")") };
+                    try
+                    {
+                        sell.Discount = int.Parse(reader["Discount"].ToString());
+                    }
+                    catch
+                    {
+                        sell.Discount = 0;
+                    }
+                    dgNoteBook.Items.Add(sell);
+                }
+            }
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             AddSaleWindow addSaleWindow = new AddSaleWindow(cmd);
             addSaleWindow.ShowDialog();
+            GetNotebook();
         }
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
