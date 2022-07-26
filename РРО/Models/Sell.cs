@@ -15,7 +15,6 @@ namespace РРО.Models
         public int Count { get; set; }
         public int TotalSum { get; set; }
         public string Customer { get; set; }
-
         public string Phone { get; set; }
         public int Discount { get; set; }
 
