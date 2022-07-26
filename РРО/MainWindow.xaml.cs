@@ -23,7 +23,7 @@ namespace РРО
     /// </summary>
     public partial class MainWindow : Window
     {
-        private string database { get; set; } = "РРО3";
+        private string database { get; set; } = "РРО";
         public SqlConnection con { get; set; }
         public SqlCommand cmd { get; set; }
         public MainWindow()
@@ -51,7 +51,8 @@ namespace РРО
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-
+            AddSaleWindow addSaleWindow = new AddSaleWindow(cmd);
+            addSaleWindow.ShowDialog();
         }
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)

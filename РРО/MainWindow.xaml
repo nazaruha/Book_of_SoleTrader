@@ -13,14 +13,14 @@
         </Grid.ColumnDefinitions>
         <DataGrid Name="dgNoteBook" IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="№" Width="80"/>
-                <DataGridTextColumn Header="Date" Width="100"/>
-                <DataGridTextColumn Header="Manufacturer" Width="100"/>
-                <DataGridTextColumn Header="Product" Width="80"/>
-                <DataGridTextColumn Header="Count" Width="50"/>
-                <DataGridTextColumn Header="Total Sum" Width="80"/>
-                <DataGridTextColumn Header="Customer" Width="100"/>
-                <DataGridTextColumn Header="Discount" Width="100"/>
+                <DataGridTextColumn Header="№" Width="80" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Date" Width="100" Binding="{Binding Date}"/>
+                <DataGridTextColumn Header="Manufacturer" Width="100" Binding="{Binding Manufacturer}"/>
+                <DataGridTextColumn Header="Product" Width="80" Binding="{Binding Product}"/>
+                <DataGridTextColumn Header="Count" Width="50" Binding="{Binding Count}"/>
+                <DataGridTextColumn Header="Total Sum" Width="80" Binding="{Binding TotalSum}"/>
+                <DataGridTextColumn Header="Customer" Width="100" Binding="{Binding Customer}"/>
+                <DataGridTextColumn Header="Discount" Width="100" Binding="{Binding Discount}"/>
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Grid.Column="1">
