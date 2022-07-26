@@ -9,5 +9,13 @@ namespace РРО.Models
     public class Sell
     {
         public int Id { get; set; }
+        public DateTime Date { get; set; }
+        public string Manufacturer { get; set; }
+        public string Product { get; set; }
+        public int Count { get; set; }
+        public int TotalSum { get; set; }
+        public string Customer { get; set; }
+        public int Discount { get; set; }
+
     }
 }
