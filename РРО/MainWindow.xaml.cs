@@ -88,7 +88,14 @@ namespace РРО
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-
+            if (dgNoteBook.SelectedItem == null) return;
+            int id = (dgNoteBook.SelectedItem as Sell).Id;
+            cmd.CommandText = "DELETE tblNotebook " +
+                @"WHERE Id = @IdField";
+            cmd.Parameters.AddWithValue(@"@IdField", id);
+            cmd.ExecuteNonQuery();
+            cmd.Parameters.Clear();
+            GetNotebook();
         }
 
         private void btnAddManufacturer_Click(object sender, RoutedEventArgs e)
