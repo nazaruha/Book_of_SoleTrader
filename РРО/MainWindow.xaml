@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:РРО"
         mc:Ignorable="d"
-        Title="MainWindow" Height="479" Width="800">
+        Title="MainWindow" Height="479" Width="988">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="329*"/>
@@ -20,6 +20,7 @@
                 <DataGridTextColumn Header="Count" Width="50" Binding="{Binding Count}"/>
                 <DataGridTextColumn Header="Total Sum" Width="80" Binding="{Binding TotalSum}"/>
                 <DataGridTextColumn Header="Customer" Width="100" Binding="{Binding Customer}"/>
+                <DataGridTextColumn Header="Phone" Width="100" Binding="{Binding Phone}"/>
                 <DataGridTextColumn Header="Discount" Width="100" Binding="{Binding Discount}"/>
             </DataGrid.Columns>
         </DataGrid>
