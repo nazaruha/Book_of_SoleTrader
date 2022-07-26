@@ -272,12 +272,20 @@ namespace РРО
 
         private void cbManufacturers_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (cbManufacturers.SelectedIndex == -1)
+            {
+                cbGroceries.Items.Clear();
+                txtTotalSum.Clear();
+                return;
+            }
             int id = GetManufacturerId();
             GetManufacturerGroceries(id);
         }
 
         private void cbGroceries_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (cbGroceries.SelectedIndex == -1)
+                return;
             int productId = GetProductId();
             if (productId == -1)
             {
@@ -358,10 +366,14 @@ namespace РРО
                     txtDiscount.Clear();
                     cmd.Parameters.Clear();
                     reader.Close();
-                    int count = int.Parse(txtCount.Text);
-                    int price = GetManufacturerProductPrice();
-                    int totalSum = count * price;
-                    txtTotalSum.Text = totalSum.ToString();
+                    if (cbGroceries.SelectedIndex != -1)
+                    {
+                        int count = int.Parse(txtCount.Text);
+                        int price = GetManufacturerProductPrice();
+                        int totalSum = count * price;
+                        txtTotalSum.Text = totalSum.ToString();
+                    }
+                    
                 }
             }
         }
@@ -406,6 +418,7 @@ namespace РРО
             UpdateCustomer();
             UpdateManufacturerProduct();
             FillNotebook();
+            MessageBox.Show("Sale has been added");
         }
 
         private void FillNotebook()
