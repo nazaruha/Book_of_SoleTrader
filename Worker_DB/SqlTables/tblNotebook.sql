@@ -1,7 +1,7 @@
 IF NOT EXISTS (SELECT * FROM sys.tables WHERE object_id = OBJECT_ID(N'[dbo].[tblNotebook]'))
 EXEC dbo.sp_executesql @statement = N'
 CREATE TABLE [dbo].[tblNotebook](
-  [Id] [int] PRIMARY KEY NOT NULL,
+  [Id] [int] IDENTITY PRIMARY KEY NOT NULL,
   [Date] [date] NOT NULL,
   [ProductId] [int] NOT NULL,
   [ManufacturerId] [int] NOT NULL,
