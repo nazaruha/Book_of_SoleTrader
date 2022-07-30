@@ -339,7 +339,8 @@ namespace РРО
 
         private void btnViewCustomers_Click(object sender, RoutedEventArgs e)
         {
-
+            ViewCustomersWindow customers = new ViewCustomersWindow(cmd);
+            customers.ShowDialog();
         }
 
         private void btnViewStorage_Click(object sender, RoutedEventArgs e)
