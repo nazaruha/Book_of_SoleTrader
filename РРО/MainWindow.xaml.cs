@@ -28,10 +28,17 @@ namespace РРО
         private string dirScripts { get; set; } = "Scripts";
         public SqlConnection con { get; set; }
         public SqlCommand cmd { get; set; }
+        private int MaxGroceriesInPage { get; set; } = 20;
+        private int pages { get; set; }
+        private int start { get; set; }
+        private int currentPage { get; set; } = 1;
+
         public MainWindow()
         {
             InitializeComponent();
             OpenDbWorker();
+            GetPages();
+            GetRangeNotebook();
         }
 
         private void OpenDbWorker()
@@ -48,13 +55,28 @@ namespace РРО
             con = new SqlConnection(connectionDB + $"Initial Catalog={database}");
             con.Open();
             cmd = con.CreateCommand();
-            GetNotebook();
         }
 
         private void GetNotebook()
         {
             string script = File.ReadAllText($"{dirScripts}\\viewtblNotebook.sql");
             cmd.CommandText = script;
+            InitializeDataGrid();
+            
+        }
+
+        private void GetRangeNotebook(int start = 0)
+        {
+            this.start = start;
+            string script = File.ReadAllText($"{dirScripts}\\viewtblNotebook_OFFSET.sql");
+            cmd.CommandText = script;
+            cmd.Parameters.AddWithValue(@"@start", start);
+            cmd.Parameters.AddWithValue(@"@end", MaxGroceriesInPage);
+            InitializeDataGrid();
+        }
+
+        private void InitializeDataGrid()
+        {
             dgNoteBook.Items.Clear();
             using (var reader = cmd.ExecuteReader())
             {
@@ -71,6 +93,24 @@ namespace РРО
                     }
                     dgNoteBook.Items.Add(sell);
                 }
+            }
+            PageOfPages_txt.Text = $"{currentPage} of {pages}";
+        }
+
+        private void GetPages()
+        {
+            cmd.CommandText = "SELECT COUNT(*) FROM tblNotebook";
+            int SalesCount = Int32.Parse(cmd.ExecuteScalar().ToString());
+            if (SalesCount < MaxGroceriesInPage)
+            {
+                pages = 1;
+                return;
+            }
+            pages = SalesCount / MaxGroceriesInPage;
+            int extra = SalesCount % MaxGroceriesInPage;
+            if (extra != 0)
+            {
+                pages++;
             }
         }
 
@@ -306,12 +346,18 @@ namespace РРО
 
         private void PrevPage_MouseDown(object sender, MouseButtonEventArgs e)
         {
-
+            if (currentPage == 1) return;
+            currentPage--;
+            start -= MaxGroceriesInPage;
+            GetRangeNotebook(start);
         }
 
         private void NextPage_MouseDown(object sender, MouseButtonEventArgs e)
         {
-
+            if (currentPage == pages) return;
+            currentPage++;
+            start += MaxGroceriesInPage;
+            GetRangeNotebook(start);
         }
     }
 }
