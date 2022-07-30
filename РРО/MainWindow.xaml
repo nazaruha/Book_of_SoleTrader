@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="479" Width="1145">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="818*"/>
             <ColumnDefinition Width="184*"/>
@@ -34,6 +37,11 @@
             <Button Name="btnAddProduct" Content="Add Product" FontSize="15" FontWeight="DemiBold" Width="126" Height="29" Background="#FFECE76B" Margin="30,10,0,0" Click="btnAddProduct_Click" HorizontalAlignment="Left"/>
             <Button Name="btnAddCustomer" Content="Add Customer" FontSize="15" FontWeight="DemiBold" Width="126" Height="29" Background="#FF6281FF" Margin="30,10,0,0" Click="btnAddCustomer_Click" HorizontalAlignment="Left"/>
             <Button Name="btnAddStorage" Content="Add to Storage" FontSize="15" FontWeight="DemiBold" Width="126" Height="29" Background="#FFE67B5C" Margin="30,10,0,0" Click="btnAddStorage_Click" HorizontalAlignment="Left"/>
+            <WrapPanel>
+                <Image Name="PrevPage" Source="/Actions-go-previous-view-icon.png" Height="27" Width="29" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="87,43,0,0" MouseDown="PrevPage_MouseDown"/>
+                <TextBox Name="PageOfPages_txt" IsReadOnly="True" Text="1 of 10" FontSize="15" FontWeight="Bold" TextAlignment="Center" Width="113" Height="27" Margin="0,42,0,0"/>
+                <Image Name="NextPage" Height="27" Width="29" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Source="/Actions-go-next-view-icon.png" Margin="0,43,0,0" MouseDown="NextPage_MouseDown"/>
+            </WrapPanel>
         </StackPanel>
         <StackPanel Grid.Column="2">
             <Label Content="View Database" FontSize="15" FontWeight="DemiBold" HorizontalAlignment="Center" Margin="0,190,0,0"/>
