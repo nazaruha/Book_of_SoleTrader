@@ -211,13 +211,6 @@ namespace РРО
             GetNotebook();
         }
 
-        private void btnEdit_Click(object sender, RoutedEventArgs e)
-        {
-            if (dgNoteBook.SelectedItem == null) return;
-            EditSaleWindow editSaleWindow = new EditSaleWindow(cmd, (dgNoteBook.SelectedItem as Sell));
-            editSaleWindow.ShowDialog();
-        }
-
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
             if (dgNoteBook.SelectedItem == null) return;
