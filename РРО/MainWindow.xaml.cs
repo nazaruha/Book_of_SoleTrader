@@ -94,6 +94,7 @@ namespace РРО
                     dgNoteBook.Items.Add(sell);
                 }
             }
+            cmd.Parameters.Clear();
             PageOfPages_txt.Text = $"{currentPage} of {pages}";
         }
 
@@ -248,7 +249,7 @@ namespace РРО
         {
             AddSaleWindow addSaleWindow = new AddSaleWindow(cmd);
             addSaleWindow.ShowDialog();
-            GetNotebook();
+            GetRangeNotebook(start);
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
@@ -297,7 +298,7 @@ namespace РРО
             cmd.ExecuteNonQuery();
             cmd.Parameters.Clear();
 
-            GetNotebook();
+            GetRangeNotebook(start);
         }
 
         private void btnAddManufacturer_Click(object sender, RoutedEventArgs e)
