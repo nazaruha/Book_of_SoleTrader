@@ -303,5 +303,15 @@ namespace РРО
         {
 
         }
+
+        private void PrevPage_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void NextPage_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }
