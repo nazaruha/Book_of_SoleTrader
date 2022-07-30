@@ -144,6 +144,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\Manufacturer.cs" />
+    <Compile Include="ViewManufacturersWindow.xaml.cs">
+      <DependentUpon>ViewManufacturersWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="AddCustomerWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -191,6 +195,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ViewManufacturersWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Sell.cs" />
@@ -224,6 +232,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Actions-go-previous-view-icon.png" />
+    <Resource Include="Actions-go-next-view-icon.png" />
+    <Content Include="Scripts\viewtblManufacturers.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\viewtblNotebook_OFFSET.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\viewtblNotebook.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

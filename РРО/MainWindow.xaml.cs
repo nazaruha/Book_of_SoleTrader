@@ -327,7 +327,8 @@ namespace РРО
 
         private void btnViewManufacturers_Click(object sender, RoutedEventArgs e)
         {
-
+            ViewManufacturersWindow manufacturers = new ViewManufacturersWindow(cmd);
+            manufacturers.ShowDialog();
         }
 
         private void btnViewGroceries_Click(object sender, RoutedEventArgs e)

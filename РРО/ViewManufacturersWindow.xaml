@@ -11,7 +11,7 @@
             <RowDefinition/>
             <RowDefinition Height="7*"/>
         </Grid.RowDefinitions>
-        <TextBox Grid.Row="0" Name="txtSearch" FontSize="20" TextAlignment="Center" TextChanged="txtSearch_TextChanged" />
+        <TextBox Grid.Row="0" Name="txtSearch" FontSize="20" TextAlignment="Center" TextChanged="txtSearch_TextChanged" Background="White" Text="Search" Foreground="#FF9C9C9C" GotFocus="txtSearch_GotFocus" LostFocus="txtSearch_LostFocus"/>
         <DataGrid Name="dgManufacturers" Grid.Row="1">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="100"/>
