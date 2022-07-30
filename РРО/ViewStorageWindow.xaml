@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:РРО"
         mc:Ignorable="d"
-        Title="ViewStorageWindow" Height="393" Width="532">
+        Title="ViewStorageWindow" Height="393" Width="494">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="37*"/>
@@ -14,10 +14,10 @@
         <TextBox Grid.Row="0" Name="txtSearch" FontSize="20" TextAlignment="Center" TextChanged="txtSearch_TextChanged" Background="White" Text="Search" Foreground="#FF9C9C9C" GotFocus="txtSearch_GotFocus" LostFocus="txtSearch_LostFocus"/>
         <DataGrid Name="dgStorage" Grid.Row="1" Margin="0,4,0,0">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Manufacturer" Binding="{Binding Manufacturer}" Width="80"/>
+                <DataGridTextColumn Header="Manufacturer" Binding="{Binding Manufacturer}" Width="150"/>
                 <DataGridTextColumn Header="Product" Binding="{Binding Product}" Width="150"/>
-                <DataGridTextColumn Header="Price x1" Binding="{Binding Price}" Width="150"/>
-                <DataGridTextColumn Header="Count" Binding="{Binding Count}" Width="120"/>
+                <DataGridTextColumn Header="Price x1" Binding="{Binding Price}" Width="80"/>
+                <DataGridTextColumn Header="Count" Binding="{Binding Count}" Width="80"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
