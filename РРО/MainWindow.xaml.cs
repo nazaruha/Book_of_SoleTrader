@@ -283,5 +283,25 @@ namespace РРО
             AddToStorageWindow addToStorageWindow = new AddToStorageWindow(cmd);
             addToStorageWindow.ShowDialog();
         }
+
+        private void btnViewManufacturers_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnViewGroceries_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnViewCustomers_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnViewStorage_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
