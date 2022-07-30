@@ -333,7 +333,8 @@ namespace РРО
 
         private void btnViewGroceries_Click(object sender, RoutedEventArgs e)
         {
-
+            ViewGroceriesWindow groceries = new ViewGroceriesWindow(cmd);
+            groceries.ShowDialog();
         }
 
         private void btnViewCustomers_Click(object sender, RoutedEventArgs e)

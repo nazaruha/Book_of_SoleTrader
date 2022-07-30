@@ -5,8 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:РРО"
         mc:Ignorable="d"
-        Title="ViewGroceriesWindow" Height="450" Width="800">
+        Title="ViewGroceriesWindow" Height="264" Width="376">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="7*"/>
+        </Grid.RowDefinitions>
+        <TextBox Grid.Row="0" Name="txtSearch" FontSize="20" TextAlignment="Center" TextChanged="txtSearch_TextChanged" Background="White" Text="Search" Foreground="#FF9C9C9C" GotFocus="txtSearch_GotFocus" LostFocus="txtSearch_LostFocus"/>
+        <DataGrid Name="dgGroceries" Grid.Row="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="100"/>
+                <DataGridTextColumn Header="Product" Binding="{Binding Name}" Width="250"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>
