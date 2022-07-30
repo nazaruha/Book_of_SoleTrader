@@ -147,6 +147,7 @@
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Manufacturer.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\StorageObject.cs" />
     <Compile Include="ViewCustomersWindow.xaml.cs">
       <DependentUpon>ViewCustomersWindow.xaml</DependentUpon>
     </Compile>
