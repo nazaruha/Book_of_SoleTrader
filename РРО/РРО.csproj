@@ -145,6 +145,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Models\Manufacturer.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="ViewGroceriesWindow.xaml.cs">
+      <DependentUpon>ViewGroceriesWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewManufacturersWindow.xaml.cs">
       <DependentUpon>ViewManufacturersWindow.xaml</DependentUpon>
     </Compile>
@@ -195,6 +199,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ViewGroceriesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ViewManufacturersWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
