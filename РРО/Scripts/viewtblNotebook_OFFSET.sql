@@ -15,6 +15,6 @@ INNER JOIN tblManufacturers as m
 ON n.ManufacturerId = m.Id
 INNER JOIN tblCustomers as c
 ON n.CustomerId = c.Id
-ORDER BY s.Id 
+ORDER BY s.ManufacturerId 
 OFFSET @start ROWS
 FETCH NEXT @end ROWS ONLY
