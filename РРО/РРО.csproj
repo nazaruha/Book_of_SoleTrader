@@ -234,6 +234,15 @@
   <ItemGroup>
     <Resource Include="Actions-go-previous-view-icon.png" />
     <Resource Include="Actions-go-next-view-icon.png" />
+    <Content Include="Scripts\viewtblStorage.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\viewtblCustomers.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\viewtblGroceries.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\viewtblManufacturers.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
