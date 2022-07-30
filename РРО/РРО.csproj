@@ -144,6 +144,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Manufacturer.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="ViewGroceriesWindow.xaml.cs">
