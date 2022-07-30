@@ -5,8 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:РРО"
         mc:Ignorable="d"
-        Title="ViewCustomersWindow" Height="450" Width="800">
+        Title="ViewCustomersWindow" Height="393" Width="532">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="37*"/>
+            <RowDefinition Height="397*"/>
+        </Grid.RowDefinitions>
+        <TextBox Grid.Row="0" Name="txtSearch" FontSize="20" TextAlignment="Center" TextChanged="txtSearch_TextChanged" Background="White" Text="Search" Foreground="#FF9C9C9C" GotFocus="txtSearch_GotFocus" LostFocus="txtSearch_LostFocus"/>
+        <DataGrid Grid.Row="1" Margin="0,4,0,0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="80"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="150"/>
+                <DataGridTextColumn Header="Phone" Binding="{Binding Phone}" Width="150"/>
+                <DataGridTextColumn Header="Purchase Sum" Binding="{Binding PurchaseSum}" Width="120"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>
