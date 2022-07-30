@@ -157,6 +157,9 @@
     <Compile Include="ViewManufacturersWindow.xaml.cs">
       <DependentUpon>ViewManufacturersWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewStorageWindow.xaml.cs">
+      <DependentUpon>ViewStorageWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="AddCustomerWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -213,6 +216,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ViewManufacturersWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewStorageWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
