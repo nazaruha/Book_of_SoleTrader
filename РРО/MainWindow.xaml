@@ -29,9 +29,9 @@
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Grid.Column="1" Grid.ColumnSpan="2">
-            <Label Content="Notebook" FontSize="20" FontWeight="DemiBold" HorizontalAlignment="Left" Margin="43,20,0,0"/>
-            <Button Name="btnAdd" Content="Add Sale" FontSize="20" FontWeight="DemiBold" Width="126" Height="29" Background="#FF59D087" Margin="30,10,0,0" Click="btnAdd_Click" HorizontalAlignment="Left"/>
-            <Button Name="btnDelete" Content="Delete Sale" FontSize="20" FontWeight="DemiBold" Width="126" Height="29" Background="#FFDE6D42" Margin="30,24,0,0" Click="btnDelete_Click" HorizontalAlignment="Left"/>
+            <Label Content="Notebook" FontSize="20" FontWeight="DemiBold" HorizontalAlignment="Center" Margin="43,20,0,0"/>
+            <Button Name="btnAdd" Content="Add Sale" FontSize="20" FontWeight="DemiBold" Width="126" Height="29" Background="#FF59D087" Margin="30,10,0,0" Click="btnAdd_Click" HorizontalAlignment="Center"/>
+            <Button Name="btnDelete" Content="Delete Sale" FontSize="20" FontWeight="DemiBold" Width="126" Height="29" Background="#FFDE6D42" Margin="30,24,0,0" Click="btnDelete_Click" HorizontalAlignment="Center"/>
             <Label Content="Update Database" FontSize="15" FontWeight="DemiBold" HorizontalAlignment="Left" Margin="30,40,0,0"/>
             <Button Name="btnAddManufacturer" Content="Add Manufacturer" FontSize="14" FontWeight="DemiBold" Width="126" Height="29" Background="#FF8267E8" Margin="30,10,0,0" Click="btnAddManufacturer_Click" HorizontalAlignment="Left"/>
             <Button Name="btnAddProduct" Content="Add Product" FontSize="15" FontWeight="DemiBold" Width="126" Height="29" Background="#FFECE76B" Margin="30,10,0,0" Click="btnAddProduct_Click" HorizontalAlignment="Left"/>
