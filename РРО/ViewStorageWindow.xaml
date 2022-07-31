@@ -5,13 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:РРО"
         mc:Ignorable="d"
-        Title="ViewStorageWindow" Height="393" Width="494">
+        Title="ViewStorageWindow" Height="393" Width="608">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="233*"/>
+            <ColumnDefinition Width="71*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="37*"/>
             <RowDefinition Height="397*"/>
         </Grid.RowDefinitions>
-        <TextBox Grid.Row="0" Name="txtSearch" FontSize="20" TextAlignment="Center" TextChanged="txtSearch_TextChanged" Background="White" Text="Search" Foreground="#FF9C9C9C" GotFocus="txtSearch_GotFocus" LostFocus="txtSearch_LostFocus"/>
+        <TextBox Grid.Row="0" Name="txtSearch" FontSize="20" TextAlignment="Center" TextChanged="txtSearch_TextChanged" Background="White" Text="Search" Foreground="#FF9C9C9C" GotFocus="txtSearch_GotFocus" LostFocus="txtSearch_LostFocus" Grid.ColumnSpan="2"/>
         <DataGrid Name="dgStorage" Grid.Row="1" Margin="0,4,0,0">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Manufacturer" Binding="{Binding Manufacturer}" Width="150"/>
@@ -20,5 +24,10 @@
                 <DataGridTextColumn Header="Count" Binding="{Binding Count}" Width="80"/>
             </DataGrid.Columns>
         </DataGrid>
+        <StackPanel Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <Label Content="Search by:" FontSize="20" FontWeight="DemiBold"/>
+            <RadioButton Name="rb_Manufacturer" Content="Manufacturer" FontSize="15" FontWeight="SemiBold" Checked="RadioButton_Checked"/>
+            <RadioButton Name="rb_Product" Content="Product" FontSize="15" FontWeight="SemiBold" Checked="RadioButton_Checked"/>
+        </StackPanel>
     </Grid>
 </Window>

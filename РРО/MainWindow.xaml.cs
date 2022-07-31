@@ -345,7 +345,8 @@ namespace РРО
 
         private void btnViewStorage_Click(object sender, RoutedEventArgs e)
         {
-
+            ViewStorageWindow storage = new ViewStorageWindow(cmd);
+            storage.ShowDialog();
         }
 
         private void PrevPage_MouseDown(object sender, MouseButtonEventArgs e)
