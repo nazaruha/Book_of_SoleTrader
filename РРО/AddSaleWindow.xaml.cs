@@ -276,10 +276,12 @@ namespace РРО
             {
                 cbGroceries.Items.Clear();
                 txtTotalSum.Clear();
+                txtCount.Text = "1";
                 return;
             }
             int id = GetManufacturerId();
             GetManufacturerGroceries(id);
+            txtCount.Text = "1";
         }
 
         private void cbGroceries_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -302,7 +304,7 @@ namespace РРО
 
         private void txtCount_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (cbManufacturers.SelectedIndex == -1) return;
+            if (cbManufacturers.SelectedIndex == -1 || cbGroceries.SelectedIndex == -1) return;
             if (String.IsNullOrWhiteSpace(txtCount.Text))
             {
                 txtTotalSum.Text = "0";
