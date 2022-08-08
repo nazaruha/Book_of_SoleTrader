@@ -285,7 +285,10 @@ namespace РРО
         private void cbGroceries_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (cbGroceries.SelectedIndex == -1)
+            {
+                txtTotalSum.Text = "0";
                 return;
+            }
             int productId = GetProductId();
             if (productId == -1)
             {
