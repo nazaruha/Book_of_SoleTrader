@@ -100,6 +100,13 @@ namespace РРО
                 lbError.Visibility = Visibility.Visible;
                 return false;
             }
+            else if (String.IsNullOrWhiteSpace(txtPhone.Text))
+            {
+                lbError.Content = "Input customer's phone";
+                lbError.Visibility = Visibility.Visible;
+                return false;
+                
+            }
             lbError.Visibility = Visibility.Hidden;
             return true;
         }
