@@ -147,6 +147,7 @@ namespace РРО
 
         private void btnAddProduct_Click(object sender, RoutedEventArgs e)
         {
+            if (!CheckInputting()) return;
             int manufacturerId = GetManufacturerId();
             int productId = GetProductId();
             if (flag)
@@ -171,6 +172,28 @@ namespace РРО
             cmd.Parameters.AddWithValue(@"@ProductIdField", productId);
             cmd.ExecuteNonQuery();
             MessageBox.Show("Data has been updated");
+        }
+
+        private bool CheckInputting()
+        {
+            string errors = "";
+            if (cbManufacturers.SelectedIndex == -1)
+                errors += "Choose Manufacturer\n";
+            if (cbGroceries.SelectedIndex == -1)
+                errors += "Choose Product\n";
+            if (String.IsNullOrEmpty(txtPrice.Text))
+                errors += "Input Price\n";
+            if (String.IsNullOrEmpty(txtCount.Text))
+                errors += "Input Count\n";
+
+            if (errors != "")
+            {
+                MessageBox.Show(errors, "Error Inputting", MessageBoxButton.OK);
+                return false;
+            }
+
+                
+            return true;
         }
     }
 }
